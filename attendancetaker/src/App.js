@@ -1,5 +1,5 @@
-// Tool Imports
-import { useState, useEffect} from 'react';
+// React Tool Imports
+import { useState } from 'react';
 import {
   Routes,
   Route,
@@ -8,6 +8,7 @@ import {
 
 //firebase stuff
 import { app } from './utils/firebase';
+import { getDatabase, ref, set, push } from 'firebase/database';
 import { 
   getAuth, 
   signInWithEmailAndPassword, 
@@ -20,15 +21,25 @@ import AccountSelection from './home';
 import Form from './components/Form';
 import Landing from './components/landing'
 
+// https://youtu.be/F7RvmvLBq2s?t=795
+//database stuff
 
 function App() {
-
   //login stuff
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('')
+  const [uid, setUID] = useState('')
+
+  // page stuff
+  const [event, setEvent] = useState('');
+  const [credit, setCredit] = useState('');
 
   // navigation 
   const nav = useNavigate();
+
+  //database 
+  const db = getDatabase(app)
+
 
   // button action function 
   const handleAction = (key) => {
@@ -37,10 +48,12 @@ function App() {
     if (key === 2) {
       createUserWithEmailAndPassword(authen, email, password)
         .then((response) => {
+          setUID(response.user.uid);
           nav('/')
           sessionStorage.setItem('Auth Token', response._tokenResponse.refreshToken)
         })
         .catch((error) => {
+          console.log(error);
           alert("bad info")
         })
     }
@@ -48,22 +61,51 @@ function App() {
     if (key === 1) {
       signInWithEmailAndPassword(authen, email, password)
         .then((response) => {
+          setUID(response.user.uid);
           nav('/')
           sessionStorage.setItem('Auth Token', response._tokenResponse.refreshToken)
         })
         .catch((error) => {
-          alert("bad info")
+          console.log(error);
+          alert("bad info");
         })
     }
   }
 
-  // useEffect(() => {
-  //   let authToken = sessionStorage.getItem('Auth Token')
 
-  //   if (authToken) {
-  //     nav('/')
-  //   }
-  // }, [])
+  // Handler for sending event data to the firebase server
+  const addEventHandler = async () => {
+
+    // code to get the current date
+    let date = new Date();
+    let dd = String(date.getDate()).padStart(2, '0');
+    let mm = String(date.getMonth() + 1).padStart(2, '0'); //January is 0!
+    let yyyy = date.getFullYear();
+
+    date = mm + '/' + dd + '/' + yyyy;
+
+    // the UID can be lost when the session expires so this ensures it's there before they query 
+    if (uid.length !== 0) {
+      const logRef = push(ref(db, "attendanceLog"));
+      await set(ref(db, `users/${uid}/${logRef.key}`), true);
+      await set(logRef, {
+        uid,
+        event,
+        credit,
+        date
+      });
+
+      setEvent('');
+      setCredit('');
+      console.log("success!")
+
+    } else {
+      alert("Please relogin")
+    }
+
+
+  };
+
   
   return (
     // all page routes
@@ -72,7 +114,7 @@ function App() {
 
           <Route
             exact path='/'
-            element={<Landing/>} 
+            element={<Landing setEvent={setEvent} setCredit={setCredit} addEventHandler={() => addEventHandler()} />} 
           />
 
           <Route 
