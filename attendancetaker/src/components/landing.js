@@ -2,7 +2,7 @@ import React, { useEffect, useReducer } from 'react'
 import { useNavigate } from 'react-router-dom'
 import AddEvent from './addEvent'
 
-export default function Home({setEvent, setCredit, setDate,addEventHandler}) {
+export default function Home({setEvent, setCredit,addEventHandler,name }) {
     let navigate = useNavigate();
 
     const handleLogout = () => {
@@ -26,7 +26,7 @@ export default function Home({setEvent, setCredit, setDate,addEventHandler}) {
             Home Page
             <button onClick={handleLogout}>Log out</button>
 
-            Add Event 
+            Add Event, {name}
             <AddEvent setEvent={setEvent} setCredit={setCredit} addEventHandler={()=> addEventHandler()}/>
         </div>
     )

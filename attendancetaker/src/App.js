@@ -12,12 +12,13 @@ import { getDatabase, ref, set, push } from 'firebase/database';
 import { 
   getAuth, 
   signInWithEmailAndPassword, 
-  createUserWithEmailAndPassword 
+  createUserWithEmailAndPassword,
+  updateProfile
 } from 'firebase/auth'
 
 
 // Component Imports 
-import AccountSelection from './home';
+import AccountSelection from './components/accountSelection';
 import Form from './components/Form';
 import Landing from './components/landing'
 
@@ -27,8 +28,9 @@ import Landing from './components/landing'
 function App() {
   //login stuff
   const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('')
-  const [uid, setUID] = useState('')
+  const [password, setPassword] = useState('');
+  const [name, setName] = useState('');
+  const [uid, setUID] = useState('');
 
   // page stuff
   const [event, setEvent] = useState('');
@@ -49,8 +51,11 @@ function App() {
       createUserWithEmailAndPassword(authen, email, password)
         .then((response) => {
           setUID(response.user.uid);
-          nav('/')
-          sessionStorage.setItem('Auth Token', response._tokenResponse.refreshToken)
+          updateProfile(response.user, {
+            displayName: name
+          });
+          nav('/');
+          sessionStorage.setItem('Auth Token', response._tokenResponse.refreshToken);
         })
         .catch((error) => {
           console.log(error);
@@ -62,6 +67,9 @@ function App() {
       signInWithEmailAndPassword(authen, email, password)
         .then((response) => {
           setUID(response.user.uid);
+          setName(response.user.displayName);
+          console.log(response.user) 
+          console.log(name)
           nav('/')
           sessionStorage.setItem('Auth Token', response._tokenResponse.refreshToken)
         })
@@ -114,7 +122,7 @@ function App() {
 
           <Route
             exact path='/'
-            element={<Landing setEvent={setEvent} setCredit={setCredit} addEventHandler={() => addEventHandler()} />} 
+            element={<Landing setEvent={setEvent} setCredit={setCredit} addEventHandler={() => addEventHandler()} name={name}/>} 
           />
 
           <Route 
@@ -124,12 +132,12 @@ function App() {
 
           <Route 
             exact path='/login' 
-            element={<Form title="Login" setEmail={setEmail} setPassword={setPassword} handleAction={() => handleAction(1)}/>}
+            element={<Form title="Login" setEmail={setEmail} setPassword={setPassword}  handleAction={() => handleAction(1)}/>}
           />
 
           <Route 
             exact path='/register' 
-            element={<Form title="Register" setEmail={setEmail} setPassword={setPassword} handleAction={() => handleAction(2)}/>}
+            element={<Form title="Register" setEmail={setEmail} setPassword={setPassword} setName={setName} handleAction={() => handleAction(2)}/>}
           />
 
 

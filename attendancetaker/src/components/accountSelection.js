@@ -2,7 +2,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-export default function Home() {
+export default function AccountSelection() {
 
     const navigate = useNavigate();
     return (
