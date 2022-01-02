@@ -1,4 +1,4 @@
-# Simple PSP Attendance Wesbite
+# Simple PSP Attendance Website
 
 ## App Summary 
 Website designed to make it easy to manage attendance for all events for Phi Sigma Pi at UNC - Chapel Hill. 
@@ -29,7 +29,7 @@ This projects makes use of the following technologies. If you need to make chang
 When making changes to the codebase, it is very important to provide comments along with your code. This project is design to be passed down to new technology chairs in Phi Sigma Pi and the codebase will need to be understood by a lot of different people. If you make a significant change, please add your name to the author section of the `README.md`. You deserve the recognition and your contact will be valuable if there are issues down the road. 
 
 ## Authors
-William Bucher, <wjbucher@gmail.com>
+William Bucher, <wjbucher3@gmail.com>
 
 ## License
 This is an open-source project. Feel free to fork this and use it with your own organization if you'd like. 
