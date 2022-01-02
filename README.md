@@ -20,10 +20,10 @@ Will update after deployment is handled.
 
 ## Technologies 
 This projects makes use of the following technologies. If you need to make changes, please familiarize yourself with their respected documentary first. Keeping the dependencies low for this project was a high-priority to ensure that it would be easy to maintain for a long time. We don't want to get caught in an situation similar to what happened with [kik](https://dev.to/chaitanyasuvarna/how-a-developer-broke-the-internet-by-un-publishing-his-package-containing-11-lines-of-code-31ei).
-    - React
-    - React-Router-Dom
-    - Firebase Auth
-    - Firebase Real Time Database
+- React
+- React-Router-Dom
+- Firebase Auth
+- Firebase Real Time Database
     
 ## Contributing
 When making changes to the codebase, it is very important to provide comments along with your code. This project is design to be passed down to new technology chairs in Phi Sigma Pi and the codebase will need to be understood by a lot of different people. If you make a significant change, please add your name to the author section of the `README.md`. You deserve the recognition and your contact will be valuable if there are issues down the road. 
