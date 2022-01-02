@@ -82,3 +82,10 @@ select {
     flex-direction: row;
     align-items: center;
 }
+
+/* finished.js */
+.finished {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

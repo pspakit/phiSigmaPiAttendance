@@ -21,6 +21,7 @@ import {
 import AccountSelection from './components/accountSelection';
 import Form from './components/Form';
 import Landing from './components/landing'
+import Finished from './components/finished'
 
 //css
 import './css/styles.css'
@@ -32,6 +33,7 @@ function App() {
   //login stuff
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
   const [name, setName] = useState('');
   const [uid, setUID] = useState('');
 
@@ -51,24 +53,30 @@ function App() {
     const authen = getAuth();
   // if they are signing up for the first time
     if (key === 2) {
-      createUserWithEmailAndPassword(authen, email, password)
-        .then((response) => {
-          setUID(response.user.uid);
-          updateProfile(response.user, {
-            displayName: name
-          });
+      if (password != confirmPassword) {
+        alert("Passwords do not match")
+      } else if (password.length < 6) {
+        alert("Your password must be at least 6 characters long.")
+      } else {
+        createUserWithEmailAndPassword(authen, email, password)
+          .then((response) => {
+            setUID(response.user.uid);
+            updateProfile(response.user, {
+              displayName: name
+            });
 
-          // throw their name in the database for later display
-          set(ref(db, `users/${response.user.uid}/name`), name);
+            // throw their name in the database for later display
+            set(ref(db, `users/${response.user.uid}/name`), name);
 
 
-          nav('/');
-          sessionStorage.setItem('Auth Token', response._tokenResponse.refreshToken);
-        })
-        .catch((error) => {
-          console.log(error);
-          alert("bad info")
-        })
+            nav('/');
+            sessionStorage.setItem('Auth Token', response._tokenResponse.refreshToken);
+          })
+          .catch((error) => {
+            console.log(error);
+            alert("bad info")
+          })
+      }
     }
   //if they are logging into previously made account
     if (key === 1) {
@@ -76,8 +84,6 @@ function App() {
         .then((response) => {
           setUID(response.user.uid);
           setName(response.user.displayName);
-          console.log(response.user) 
-          console.log(name)
           nav('/')
           sessionStorage.setItem('Auth Token', response._tokenResponse.refreshToken)
         })
@@ -113,10 +119,10 @@ function App() {
 
       setEvent('');
       setCredit('');
-      console.log("success!")
+      nav('/finished')
 
     } else {
-      alert("Please relogin")
+      alert("Seems like your credentials have expired, please relogin")
     }
 
 
@@ -145,7 +151,12 @@ function App() {
 
           <Route 
             exact path='/register' 
-            element={<Form title="Register" setEmail={setEmail} setPassword={setPassword} setName={setName} handleAction={() => handleAction(2)}/>}
+            element={<Form title="Register" setEmail={setEmail} setPassword={setPassword} setConfirmPassword={setConfirmPassword} setName={setName} handleAction={() => handleAction(2)}/>}
+          />
+
+          <Route
+            exact path='/finished'
+            element={<Finished name={name}/>}
           />
 
 
