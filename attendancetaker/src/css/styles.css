@@ -1,0 +1,84 @@
+* {
+    font-family: 'Ubuntu', sans-serif;
+}
+
+/* general component css - use these to maintain a fluid web experience */
+
+body {
+    background-color: rgb(255, 251, 194);
+}
+
+h1 {
+    font-size: 40px;
+}
+
+button {
+    /* looks */
+    background-color: white;
+    border-radius: 15pt;
+    
+    /* spacing and sizing*/
+    padding:10pt;
+    margin: 10pt;
+    font-size: 20px;
+}
+
+button:hover {
+    background-color: rgb(240, 150, 240);
+}
+
+input {
+    /* looks */
+    border-radius: 15pt;
+
+    /* spacing and sizing */
+    padding: 10pt;
+    margin: 10pt;
+    font-size: 20px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+select {
+    /* looks */
+    background-color: white;
+    font-size: 20px;
+    /* spacing and sizing */
+    padding: 10pt;
+    margin: 10pt;
+    font-size: 20px;
+
+}
+
+
+/* accountSelection.js  */
+.accountSelection {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* form.js */
+.logForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* landing.js */
+.landingTitle {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+/* addevent.js */
+.creditSelect {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}

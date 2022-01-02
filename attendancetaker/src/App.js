@@ -22,6 +22,9 @@ import AccountSelection from './components/accountSelection';
 import Form from './components/Form';
 import Landing from './components/landing'
 
+//css
+import './css/styles.css'
+
 // https://youtu.be/F7RvmvLBq2s?t=795
 //database stuff
 
@@ -54,6 +57,11 @@ function App() {
           updateProfile(response.user, {
             displayName: name
           });
+
+          // throw their name in the database for later display
+          set(ref(db, `users/${response.user.uid}/name`), name);
+
+
           nav('/');
           sessionStorage.setItem('Auth Token', response._tokenResponse.refreshToken);
         })
@@ -95,7 +103,7 @@ function App() {
     // the UID can be lost when the session expires so this ensures it's there before they query 
     if (uid.length !== 0) {
       const logRef = push(ref(db, "attendanceLog"));
-      await set(ref(db, `users/${uid}/${logRef.key}`), true);
+      await set(ref(db, `users/${uid}/events/${logRef.key}`), logRef.key);
       await set(logRef, {
         uid,
         event,
