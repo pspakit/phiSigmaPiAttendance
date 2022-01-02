@@ -5,11 +5,6 @@ import AddEvent from './addEvent'
 export default function Home({setEvent, setCredit,addEventHandler,name }) {
     let navigate = useNavigate();
 
-    const handleLogout = () => {
-        sessionStorage.removeItem('Auth Token');
-        navigate('/needAccount')
-    }
-
     useEffect(() => {
         let authToken = sessionStorage.getItem('Auth Token')
 
@@ -25,7 +20,6 @@ export default function Home({setEvent, setCredit,addEventHandler,name }) {
         <div>
             <div className="landingTitle">       
                 <h1>Add Event, {name}</h1>
-                <button onClick={handleLogout}>Log out</button>
             </div>
             <AddEvent setEvent={setEvent} setCredit={setCredit} addEventHandler={()=> addEventHandler()}/>
         </div>
