@@ -1,7 +1,6 @@
 
-export default function addEvent({setEvent, setCredit, addEventHandler}) {
+export default function addEvent({credits, setEvent, setCredit, addEventHandler}) {
 
-  const credits = ["", "Chapter", "Scholarship", "Service"]
   return (
     <div className="Login">
       <form>

@@ -11,6 +11,9 @@ body {
 h1 {
     font-size: 40px;
 }
+h2 {
+    font-size: 30px;
+}
 
 button {
     /* looks */
@@ -24,7 +27,7 @@ button {
 }
 
 button:hover {
-    background-color: rgb(240, 150, 240);
+    background-color: rgb(236, 183, 236);
 }
 
 input {
@@ -88,4 +91,31 @@ select {
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+/* fetchResults.js */
+.results {
+    display: flex;
+    flex-direction: column;
+}
+.eventContainer {
+    display: grid;
+    justify-self: center;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap:5px;
+
+}
+.eventBox {
+    background-color: rgb(236, 183, 236);
+    border-radius: 15pt;
+    padding:10pt;
+    margin: 10pt;
+}
+
+@media only screen and (max-width: 768px) {
+    .eventContainer {
+        display: flex;
+        flex-direction: column;
+    }
+    
 }
