@@ -16,6 +16,7 @@ export default function addEvent({setEvent, setCredit, addEventHandler}) {
         <input required type="text" placeholder="What is the Event?" onChange={(e) => setEvent(e.target.value)}/>
         <button type="button" onClick={addEventHandler} >Enter</button>
       </form>
+
     </div>
   );
 }

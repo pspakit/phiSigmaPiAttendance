@@ -49,11 +49,12 @@ function App() {
 
 
   // button action function 
-  const handleAction = (key) => {
+  const loginAction = (e, key) => {
+    e.preventDefault();
     const authen = getAuth();
   // if they are signing up for the first time
     if (key === 2) {
-      if (password != confirmPassword) {
+      if (password !== confirmPassword) {
         alert("Passwords do not match")
       } else if (password.length < 6) {
         alert("Your password must be at least 6 characters long.")
@@ -97,7 +98,6 @@ function App() {
 
   // Handler for sending event data to the firebase server
   const addEventHandler = async () => {
-
     // code to get the current date
     let date = new Date();
     let dd = String(date.getDate()).padStart(2, '0');
@@ -128,6 +128,11 @@ function App() {
 
   };
 
+  const handleLogout = () => {
+    sessionStorage.removeItem('Auth Token');
+    nav('/needAccount')
+  }
+
   
   return (
     // all page routes
@@ -136,7 +141,7 @@ function App() {
 
           <Route
             exact path='/'
-            element={<Landing setEvent={setEvent} setCredit={setCredit} addEventHandler={() => addEventHandler()} name={name}/>} 
+            element={<Landing setEvent={setEvent} setCredit={setCredit} addEventHandler={() => addEventHandler()} name={name} handleLogout={handleLogout}/>} 
           />
 
           <Route 
@@ -146,17 +151,17 @@ function App() {
 
           <Route 
             exact path='/login' 
-            element={<Form title="Login" setEmail={setEmail} setPassword={setPassword}  handleAction={() => handleAction(1)}/>}
+            element={<Form title="Login" setEmail={setEmail} setPassword={setPassword}  loginAction={(event) => loginAction(event, 1)}/>}
           />
 
           <Route 
             exact path='/register' 
-            element={<Form title="Register" setEmail={setEmail} setPassword={setPassword} setConfirmPassword={setConfirmPassword} setName={setName} handleAction={() => handleAction(2)}/>}
+            element={<Form title="Register" setEmail={setEmail} setPassword={setPassword} setConfirmPassword={setConfirmPassword} setName={setName} loginAction={(event) => loginAction(event, 2)}/>}
           />
 
           <Route
             exact path='/finished'
-            element={<Finished name={name}/>}
+            element={<Finished name={name} handleLogout={handleLogout}/>}
           />
 
 

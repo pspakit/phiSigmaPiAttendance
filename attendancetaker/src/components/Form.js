@@ -1,4 +1,4 @@
-export default function LogForm({title, setEmail, setPassword, setConfirmPassword, setName, handleAction}) {
+export default function LogForm({title, setEmail, setPassword, setConfirmPassword, setName, loginAction}) {
   
   return (
     <div className="logForm">
@@ -12,7 +12,7 @@ export default function LogForm({title, setEmail, setPassword, setConfirmPasswor
         {title === "Register" && 
           <input type="password" onChange={(e) => setConfirmPassword(e.target.value)} placeholder='Confirm Password'/>
         }
-        <button type="button" onClick={handleAction}>{title}</button>
+        <button type="submit" onClick={loginAction}>{title}</button>
       </form>
     </div>
   );

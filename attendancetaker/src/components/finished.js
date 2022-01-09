@@ -1,12 +1,4 @@
-import { useNavigate } from 'react-router-dom'
-
-export default function Finshed({name }) {
-    let navigate = useNavigate();
-
-    const handleLogout = () => {
-        sessionStorage.removeItem('Auth Token');
-        navigate('/needAccount')
-    }
+export default function Finshed({name, handleLogout}) {
 
     return (
         <div>
