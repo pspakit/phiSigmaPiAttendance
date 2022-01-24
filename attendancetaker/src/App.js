@@ -43,11 +43,12 @@ function App() {
   const [readerName, setReaderName] = useState('');
   const [finalData, setFinalData] = useState([]);
   const [creditSearch, setCreditSearch] = useState('')
+  const [dateSearch, setDateSearch] = useState('')
 
   // form stuff 
-  const credits = ["", "Chapter", "Scholarship", "Service"]
+  const credits = ["Select Credit", "Chapter", "Scholarship", "Service", "Recruitment"]
 
-  // page stuff
+  // submitting new event stuff
   const [event, setEvent] = useState('');
   const [credit, setCredit] = useState('');
 
@@ -65,9 +66,11 @@ function App() {
   // if they are signing up for the first time
     if (key === 2) {
       if (password !== confirmPassword) {
-        alert("Passwords do not match")
+        alert("Passwords do not match");
       } else if (password.length < 6) {
-        alert("Your password must be at least 6 characters long.")
+        alert("Your password must be at least 6 characters long.");
+      } else if (name.length === 0) {
+        alert("fill out the name field");
       } else {
         createUserWithEmailAndPassword(authen, email, password)
           .then((response) => {
@@ -146,11 +149,11 @@ function App() {
   }
 
 
-  const fetchData = async () => {
-    // if (uid.length === 0) {
-    //   alert("log in again")
-    // }
-    // console.log(uid)
+  const fetchData = async (searchType) => {
+    if (uid.length === 0) {
+      alert("Seems like your credentials have expired, please relogin");
+      return;
+    }
 
     const dbRef = ref(getDatabase());
     let eventData = {};
@@ -182,38 +185,84 @@ function App() {
     const userKeys = Object.keys(userData)
     const eventKeys = Object.keys(eventData)
 
-
-    // finds all the users that meet the search criteria and stores their 
+    if (searchType === 1) {
+    // CHAPER SEARCH
+    setReaderName("") // i do this so when i do the display on the next page it is nothing
     userKeys.forEach((userKey, i) => {
-      let userObject = {};
-      let user = userData[userKey];
-      let currentName = user["name"];
-      userObject["name"] = currentName;
-      if (currentName.toLowerCase().includes(readerName.toLowerCase())  ) {
-        // console.log("Found a match with " + currentName + " and " + readerName.toLowerCase());
+        //extracting the name out of the json
+        let userObject = {};
+        let user = userData[userKey];
+        let currentName = user["name"];
+        userObject["name"] = currentName;
         
-        let userEventList = [];
+        if (currentName != undefined) {
+          let userEventList = [];
 
-        // for each event in the list, checks to see if it matches the current name 
-        // and the current credit search term
-        eventKeys.forEach((eventKey, j) => {
-          let currentEvent = eventData[eventKey]
-          let eventUID = currentEvent["uid"];
-          if (eventUID === userKey && creditSearch === currentEvent["credit"]) {
-            userEventList.push(currentEvent);
+          eventKeys.forEach((eventKey, j) => {
+            let currentEvent = eventData[eventKey]
+            let eventUID = currentEvent["uid"];
+            let eventCredit = currentEvent["credit"];
+            let eventDate = currentEvent["date"];
+            if (eventUID === userKey && eventCredit === "Chapter" && dateSearch === eventDate ) {
+              userEventList.push(currentEvent);
+            }
+          });
+          userObject["events"] = userEventList;
+          if (userObject["events"].length != 0) {
+            finalList.push(userObject);
+
           }
-        });
-        userObject["events"] = userEventList;
-        finalList.push(userObject);
 
-      } 
-    });
+        }
+      });
+
+   } else { //searchType === 2
+
+
+      // CREDIT SEARCH
+
+      setDateSearch("") // i do this so when i do the display on the next page it is nothing
+
+      // finds all the users that meet the search criteria and stores 
+      userKeys.forEach((userKey, i) => {
+        //extracting the name out of the json
+        let userObject = {};
+        let user = userData[userKey];
+        let currentName = user["name"];
+        userObject["name"] = currentName;
+        // NEED the undefined short circuit incase someone gets an account through with no name
+        if (currentName != undefined && currentName.toLowerCase().includes(readerName.toLowerCase())  ) {
+          // console.log("Found a match with " + currentName + " and " + readerName.toLowerCase());
+          
+          let userEventList = [];
+
+          // for each event in the list, checks to see if it matches the current name 
+          // and the current credit search term
+          eventKeys.forEach((eventKey, j) => {
+            let currentEvent = eventData[eventKey]
+            let eventUID = currentEvent["uid"];
+            if (eventUID === userKey && creditSearch === currentEvent["credit"]) {
+              userEventList.push(currentEvent);
+            }
+          });
+          userObject["events"] = userEventList;
+          if (userObject["events"].length != 0) {
+            finalList.push(userObject);
+
+          }
+
+        } 
+      });
+
+    }
     // console.log(finalList);
     setFinalData(finalList);
     nav('/readerResults')
   }
 
-  const navBackToSearch = () => {
+  const handleSearch = () => {
+    setReaderName("");
+    setDateSearch("");
     nav('/reader')
   }
 
@@ -225,7 +274,7 @@ function App() {
 
           <Route
             exact path='/'
-            element={<Landing credits={credits} setEvent={setEvent} setCredit={setCredit} addEventHandler={() => addEventHandler()} name={name} handleLogout={handleLogout}/>} 
+            element={<Landing credits={credits} setEvent={setEvent} setCredit={setCredit} addEventHandler={() => addEventHandler()} name={name} handleLogout={handleLogout} handleSearch={handleSearch}/>} 
           />
 
           <Route 
@@ -250,12 +299,12 @@ function App() {
 
           <Route 
             exact path='/reader'
-            element={<Reader credits={credits} fetchData={fetchData} setReaderName={setReaderName} setCreditSearch={setCreditSearch}/>}
+            element={<Reader credits={credits} chapterSearch={() => fetchData(1)} creditSearch={() => fetchData(2)} setReaderName={setReaderName} setCreditSearch={setCreditSearch} setDateSearch={setDateSearch} handleLogout={handleLogout}/>}
           />
 
           <Route
             exact path='/readerResults'
-            element={<Results goBack={navBackToSearch} data={finalData} search={readerName}/>}
+            element={<Results goBack={handleSearch} data={finalData} nameSearch={readerName} dateSearch={dateSearch}/>}
           />
 
         </Routes>

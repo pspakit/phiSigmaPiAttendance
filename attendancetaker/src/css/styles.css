@@ -79,6 +79,13 @@ select {
     justify-content: space-between;
 }
 
+.footerLanding {
+    position: fixed;
+    bottom: 50px;
+    display: flex;
+    flex-direction: column;
+}
+
 /* addevent.js */
 .creditSelect {
     display: flex;
