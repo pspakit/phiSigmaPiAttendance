@@ -1,0 +1,26 @@
+{
+    "rules": {
+      ".read":"false",
+      ".write":"false",
+        
+      "users": {
+        ".read":"auth !== null",
+        "$uid": {
+          ".write": "auth.uid === $uid",  
+            "name": {
+              ".validate": "newData.isString()"
+            }
+        }
+      },
+      
+      "attendanceLog":{
+        ".read":"auth !== null",
+        "$eventID": {
+          ".write": "newData.child('uid').val() == auth.uid && (!data.exists() || data.child('uid').val() == auth.uid)",
+          ".indexOn": ["credit", "date", "event", "uid"]
+        }
+      }
+  
+    }
+  }
+  
