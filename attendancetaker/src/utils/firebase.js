@@ -5,6 +5,9 @@ import { initializeApp } from "firebase/app";
 
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+
+// Old firebaseConfig
+
 /*const firebaseConfig = {
   apiKey: "AIzaSyCp_3hdrUprDdmoI9O3z1i6OwAJK_JArYg",
   authDomain: "phisigmapiattendance-6b5cd.firebaseapp.com",
@@ -15,6 +18,8 @@ import { initializeApp } from "firebase/app";
   measurementId: "G-QVR4D71SRK",
   databaseURL: "https://phisigmapiattendance-6b5cd-default-rtdb.firebaseio.com/"
 };*/
+
+// Updated firebaseConfig
 
 const firebaseConfig = {
   apiKey: "AIzaSyBXYP3_-5w7DrZ_fzVLoQ6ftgjd6uNCUeE",
