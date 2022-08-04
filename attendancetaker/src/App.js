@@ -195,7 +195,7 @@ function App() {
         let currentName = user["name"];
         userObject["name"] = currentName;
         
-        if (currentName != undefined) {
+        if (currentName !== undefined) {
           let userEventList = [];
 
           eventKeys.forEach((eventKey, j) => {
@@ -208,7 +208,7 @@ function App() {
             }
           });
           userObject["events"] = userEventList;
-          if (userObject["events"].length != 0) {
+          if (userObject["events"].length !== 0) {
             finalList.push(userObject);
 
           }
@@ -231,7 +231,7 @@ function App() {
         let currentName = user["name"];
         userObject["name"] = currentName;
         // NEED the undefined short circuit incase someone gets an account through with no name
-        if (currentName != undefined && currentName.toLowerCase().includes(readerName.toLowerCase())  ) {
+        if (currentName !== undefined && currentName.toLowerCase().includes(readerName.toLowerCase())  ) {
           // console.log("Found a match with " + currentName + " and " + readerName.toLowerCase());
           
           let userEventList = [];
@@ -246,7 +246,7 @@ function App() {
             }
           });
           userObject["events"] = userEventList;
-          if (userObject["events"].length != 0) {
+          if (userObject["events"].length !== 0) {
             finalList.push(userObject);
 
           }
