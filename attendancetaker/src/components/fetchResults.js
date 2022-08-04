@@ -1,8 +1,8 @@
 export default function results({goBack, data, nameSearch, dateSearch}) {
     return (
        <div className="results">
-               {nameSearch != "" && <h1>Results for '{nameSearch}'</h1>}
-               {dateSearch != "" && <h1>Results for '{dateSearch}'</h1> }
+               {nameSearch !== "" && <h1>Results for '{nameSearch}'</h1>}
+               {dateSearch !== "" && <h1>Results for '{dateSearch}'</h1> }
                 
            <button onClick={goBack}>New Search</button>
            {/* user's name */}
