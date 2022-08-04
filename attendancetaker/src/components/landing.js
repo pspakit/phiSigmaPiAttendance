@@ -15,7 +15,10 @@ export default function Home({credits, setEvent, setCredit,addEventHandler,name,
         if (!authToken) {
             navigate('/needAccount')
         }
-    }, [])
+    }, []) // eslint-disable-line react-hooks/exhaustive-deps
+
+    // Had to add this line ^ as there was an issue with using navigate in useEffect
+
     return (
         <div className='landing'>
             <div className="landingTitle">       
