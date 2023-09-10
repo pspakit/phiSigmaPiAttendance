@@ -16,6 +16,7 @@ export default function results({goBack, data, nameSearch, dateSearch}) {
                                 <h3>Event #{index}</h3>
                                 <p>Credit: {event["credit"]}</p>
                                 <p>Event Description: {event["event"]}</p>
+                                {/* TODO: get the date from the list. */}
                                 <p>Date: {event["date"]}</p>
                             </div>
                    })}

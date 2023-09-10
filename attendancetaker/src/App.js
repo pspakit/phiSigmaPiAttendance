@@ -44,13 +44,23 @@ function App() {
   const [finalData, setFinalData] = useState([]);
   const [creditSearch, setCreditSearch] = useState('')
   const [dateSearch, setDateSearch] = useState('')
+  const [eventSearch, setEventSearch] = useState('')
+  const [searchResults, setSearchResults] = useState([]);
 
   // form stuff 
   const credits = ["Select Credit", "Chapter", "Scholarship", "Service", "Recruitment"]
-
+  // TODO: add event and add date
+  const events = [
+    { eventName: "fa23 Speed Dating", eventDate: "09-11-2023"},
+    { eventName: "Chapter Meeting 9/13", eventDate: "09-13-2023"},
+    { eventName: "fa23 Puzzle Night", eventDate: "09-14-2023"},
+    { eventName: "fa23 Movie Madness", eventDate: "09-15-2023"}
+    // Add more events as needed
+  ];
   // submitting new event stuff
   const [event, setEvent] = useState('');
   const [credit, setCredit] = useState('');
+  // const [selectedDate, setSelectedDate] = useState('');
 
   // navigation 
   const nav = useNavigate();
@@ -108,6 +118,11 @@ function App() {
     }
   }
 
+  const eventSearchHandler = () => {
+    // Perform event search logic here
+    const filteredResults = events.filter((event) => event.eventName === eventSearch);
+    setSearchResults(filteredResults);
+  };
 
   // Handler for sending event data to the firebase server
   const addEventHandler = async () => {
@@ -122,8 +137,8 @@ function App() {
     // the UID can be lost when the session expires so this ensures it's there before they query 
     if (uid.length === 0) {
       alert("Seems like your credentials have expired, please relogin");
-    } else if (credit === "") {
-      alert("Please Select a Credit");
+    } else if (credit === "" || event === "") {
+      alert("Please Select a Credit / Event");
     } else {
       // everything is all good, send the data
       const logRef = push(ref(db, "attendanceLog"));
@@ -147,7 +162,7 @@ function App() {
     sessionStorage.removeItem('Auth Token');
     nav('/needAccount')
   }
-
+  
 
   const fetchData = async (searchType) => {
     if (uid.length === 0) {
@@ -253,8 +268,36 @@ function App() {
 
         } 
       });
+      // Assuming this is part of your App component in App.js
+// const eventSearch = () => {
+//   const selectedEventName = document.getElementById('event').value;
+//   fetchData(3, selectedEventName);
+// }
+
+// Assuming fetchData function is defined above this block
+
 
     }
+
+    
+    // if (searchType === 3) {
+    //   // EVENT SEARCH
+    //   setEventSearch("") // i do this so when i do the display on the next page it is nothing
+
+    //   userKeys.forEach((userKey, i) => {
+    //     //extracting the name out of the json
+    //     let userObject = {};
+    //     let user = userData[userKey];
+    //     let currentName = user["name"];
+    //   });
+    // }
+
+  // Now, filteredUserData contains the user keys that match the selected event
+  // You can do something with this filtered data here
+
+    
+
+
     // console.log(finalList);
     setFinalData(finalList);
     nav('/readerResults')
@@ -274,7 +317,7 @@ function App() {
 
           <Route
             exact path='/'
-            element={<Landing credits={credits} setEvent={setEvent} setCredit={setCredit} addEventHandler={() => addEventHandler()} name={name} handleLogout={handleLogout} handleSearch={handleSearch}/>} 
+            element={<Landing credits={credits} events={events} setEvent={setEvent} setCredit={setCredit} addEventHandler={() => addEventHandler()} name={name} handleLogout={handleLogout} handleSearch={handleSearch}/>} 
           />
 
           <Route 
@@ -311,7 +354,6 @@ function App() {
         
   );
 }
-
 
 
 export default App;
