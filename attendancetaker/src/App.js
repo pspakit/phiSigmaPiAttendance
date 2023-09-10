@@ -44,8 +44,6 @@ function App() {
   const [finalData, setFinalData] = useState([]);
   const [creditSearch, setCreditSearch] = useState('')
   const [dateSearch, setDateSearch] = useState('')
-  const [eventSearch, setEventSearch] = useState('')
-  const [searchResults, setSearchResults] = useState([]);
 
   // form stuff 
   const credits = ["Select Credit", "Chapter", "Scholarship", "Service", "Recruitment"]
@@ -117,12 +115,6 @@ function App() {
         })
     }
   }
-
-  const eventSearchHandler = () => {
-    // Perform event search logic here
-    const filteredResults = events.filter((event) => event.eventName === eventSearch);
-    setSearchResults(filteredResults);
-  };
 
   // Handler for sending event data to the firebase server
   const addEventHandler = async () => {
