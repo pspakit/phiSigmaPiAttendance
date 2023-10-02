@@ -57,9 +57,13 @@ function App() {
     // { eventName: "Chapter Meeting 9/20", eventDate: "09-20-2023"},
     // { eventName: "fa23 Jeopardy", eventDate: "09-21-2023"},
     // { eventName: "fa23 PJ Potluck", eventDate: "09-22-2023"}
-    { eventName: "fa23 Bid Banquet", eventDate: "09-26-2023"},
-    { eventName: "Chapter Meeting 9/27", eventDate: "09-27-2023"},
-    { eventName: "Chapter Meeting 10/4", eventDate: "10-04-2023"}
+    // { eventName: "fa23 Bid Banquet", eventDate: "09-26-2023"},
+    // { eventName: "Chapter Meeting 9/27", eventDate: "09-27-2023"},
+    { eventName: "Chapter Meeting 10/4", eventDate: "10-04-2023"},
+    { eventName: "fa23 Edible Campus Workday", eventDate: "10-05-2023"},
+    { eventName: "fa23 Flower Care", eventDate: "10-05-2023"},
+    { eventName: "fa23 Retreat", eventDate: "10-06-2023"},
+    { eventName: "fa23 Jordan Lake Cleanup", eventDate: "10-08-2023"}
     // Add more events as needed
   ];
   // submitting new event stuff
