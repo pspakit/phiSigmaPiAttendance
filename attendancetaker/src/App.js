@@ -60,7 +60,7 @@ function App() {
     // { eventName: "fa23 Bid Banquet", eventDate: "09-26-2023"},
     // { eventName: "Chapter Meeting 9/27", eventDate: "09-27-2023"},
     { eventName: "Chapter Meeting 10/11", eventDate: "10-11-2023"},
-    { eventName: "Big Little Reveak", eventDate: "10-12-2023"},
+    { eventName: "Big Little Reveal", eventDate: "10-12-2023"},
     { eventName: "fa23 Halloween Crochet", eventDate: "10-13-2023"}
     // Add more events as needed
   ];
