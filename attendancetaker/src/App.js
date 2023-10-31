@@ -63,10 +63,11 @@ function App() {
     { eventName: "Chapter Meeting 10/11", eventDate: "10-11-2023"},
     { eventName: "Big Little Reveal", eventDate: "10-12-2023"},
     { eventName: "fa23 Halloween Crochet", eventDate: "10-13-2023"},
-    */
     { eventName: "Chapter Meeting 10/25", eventDate: "10-25-2023" },
     { eventName: "fa23 Pumpkin Painting", eventDate: "10-26-2023" },
-    { eventName: "fa23 Polaroid Night", eventDate: "10-27-2023" }
+    { eventName: "fa23 Polaroid Night", eventDate: "10-27-2023" },
+    */
+    { eventName: "Chapter Meeting 11/1", eventDate: "11-01-2023" },
     // Add more events as needed
   ];
   // submitting new event stuff
