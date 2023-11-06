@@ -51,8 +51,8 @@ function App() {
   const events = [
     { eventName: "fa23 Powerpoint Night", eventDate: "11-06-2023" },
     { eventName: "Chapter Meeting 11/8", eventDate: "11-08-2023" },
-    { eventName: "Writing Letters to UNC Hospitals", eventDate: "11-09-2023" },
-    { eventName: "Ritual", eventDate: "11-10-2023" },
+    { eventName: "fa23 Writing Letters to UNC Hospitals", eventDate: "11-09-2023" },
+    { eventName: "fa23 Ritual", eventDate: "11-10-2023" },
     // Add more events as needed
   ];
   // submitting new event stuff
