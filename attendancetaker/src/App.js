@@ -53,6 +53,7 @@ function App() {
     { eventName: "Chapter Meeting 11/8", eventDate: "11-08-2023" },
     { eventName: "fa23 Writing Letters to UNC Hospitals", eventDate: "11-09-2023" },
     { eventName: "fa23 Ritual", eventDate: "11-10-2023" },
+    { eventName: "fa23 Post-Football Game Cleanup", eventDate: "11-12-2023" },
     // Add more events as needed
   ];
   // submitting new event stuff
