@@ -37,6 +37,7 @@ When making changes to the codebase, it is very important to provide comments al
 ## Authors
 William Bucher, <wjbucher3@gmail.com>
 Brandon Hall, <brandon@hokiehalls.com>
+Yejin Jang, <yejinjang.gina@gmail.com>
 
 ## License
 This is an open-source project. Feel free to fork this and use it with your own organization if you'd like. 
