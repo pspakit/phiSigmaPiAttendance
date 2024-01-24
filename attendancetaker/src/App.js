@@ -51,9 +51,7 @@ function App() {
   const events = [
                  // ADD EVENTS HERE
     { eventName: "Chapter Meeting 01/24", eventDate: "01-24-2024" },
-    { eventName: "Cube Painting", eventDate: "01-18-2024" },
-    { eventName: "Speed Dating", eventDate: "01-22-2024" }, 
-    { eventName: "Trivia!", eventDate: "01-23-2024" },
+    { eventName: "Dog Toy Making!", eventDate: "01-24-2024" },
     { eventName: "Craft Night", eventDate: "01-25-2024" },
     { eventName: "Friday Event 1", eventDate: "01-26-2024" },
     { eventName: "We Are Not Really Strangers", eventDate: "01-29-2024" },
