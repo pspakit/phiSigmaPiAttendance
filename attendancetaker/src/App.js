@@ -49,11 +49,7 @@ function App() {
   const credits = ["Select Credit", "Chapter", "Scholarship", "Service", "Recruitment"]
   // TODO: add event and add date
   const events = [
-                 // ADD EVENTS HERE
-    { eventName: "Scavenger Hunt", eventDate: "02-29-2024" },
-    { eventName: "TRI MIXER!!", eventDate: "03-01-2024" },
-    { eventName: "Jordan Lake Picnic", eventDate: "03-03-2024" },
-    { eventName: "Resume Workshop", eventDate: "03-04-2024" },
+                 // ADD EVENTS HERE\
     { eventName: "Inclusion Meeting", eventDate: "03-06-2024" },
     { eventName: "Chapter Meeting 03/06", eventDate: "03-06-2024" },
 
