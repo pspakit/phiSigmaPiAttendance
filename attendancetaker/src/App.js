@@ -50,9 +50,8 @@ function App() {
   // TODO: add event and add date
   const events = [
                  // ADD EVENTS HERE
-    { eventName: "Tote Bag", eventDate: "03-21-2024" },
-    { eventName: "Chapter Meeting 03/20", eventDate: "03-20-2024" },
-    { eventName: "Polaroid Night", eventDate: "03-22-2024" },
+    { eventName: "Networking Within PhiSig", eventDate: "03-26-2024" },
+    { eventName: "Letters to UNC Staff", eventDate: "03-27-2024" },
 
 
     // Add more events as needed
