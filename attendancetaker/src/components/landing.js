@@ -22,7 +22,7 @@ export default function Home({credits, events, setEvent, setCredit,addEventHandl
     return (
         <div className='landing'>
             <div className="landingTitle">       
-                <h1>What event are you at, {name} </h1>
+                <h1>What event are you at, {name} ? </h1>
             </div>
             <AddEvent credits={credits} events={events} setEvent={setEvent} setCredit={setCredit} addEventHandler={()=> addEventHandler()}/>
             <div className='footerLanding'>
