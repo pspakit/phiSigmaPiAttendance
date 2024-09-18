@@ -12,7 +12,7 @@ import { getDatabase, ref, set, push, get, child } from 'firebase/database';
 import { 
   getAuth, 
   signInWithEmailAndPassword, 
-  createUserWithEmailAndPassword,
+  createUserWithEmailAndPassword,-
   updateProfile
 } from 'firebase/auth'
 
@@ -50,12 +50,10 @@ function App() {
   // TODO: add event and add date
   const events = [
                  // ADD EVENTS HERE
-    { eventName: "Family Feud Rush", eventDate: "09-12-2024" },
-    { eventName: "Friday Event Rush", eventDate: "09-13-2024" },
-    { eventName: "Letters of Love Service", eventDate: "09-16-2024" },
-    { eventName: "Craft Night Rush", eventDate: "09-17-2024" },
-    { eventName: "We're Not Really Strangers Rush", eventDate: "09-18-2024" },
     { eventName: "Chapter", eventDate: "09-18-2024" },
+    { eventName: "Fishbowl Rush", eventDate: "09-19-2024" },
+    { eventName: "PJ Potluck Rush", eventDate: "09-20-2024" },
+    { eventName: "Chapter", eventDate: "09-25-2024" }
 
     // Add more events as needed
   ];
