@@ -12,7 +12,7 @@ import { getDatabase, ref, set, push, get, child } from 'firebase/database';
 import { 
   getAuth, 
   signInWithEmailAndPassword, 
-  createUserWithEmailAndPassword,-
+  createUserWithEmailAndPassword,
   updateProfile
 } from 'firebase/auth'
 
