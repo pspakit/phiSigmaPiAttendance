@@ -50,10 +50,10 @@ function App() {
   // TODO: add event and add date
   const events = [
                  // ADD EVENTS HERE
-    { eventName: "Chapter", eventDate: "09-18-2024" },
-    { eventName: "Fishbowl Rush", eventDate: "09-19-2024" },
-    { eventName: "PJ Potluck Rush", eventDate: "09-20-2024" },
-    { eventName: "Chapter", eventDate: "09-25-2024" }
+    { eventName: "Baking for Table Service", eventDate: "10-02-2024" },
+    { eventName: "Chapter", eventDate: "10-02-2024" },
+    { eventName: "Retreat", eventDate: "10-05-2024" },
+    { eventName: "Chapter", eventDate: "10-09-2024" }
 
     // Add more events as needed
   ];
