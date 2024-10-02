@@ -51,6 +51,7 @@ function App() {
   const events = [
                  // ADD EVENTS HERE
     { eventName: "Baking for Table Service", eventDate: "10-02-2024" },
+    { eventName: "Hispanic Heritage Month", eventDate: "10-02-2024" },
     { eventName: "Chapter", eventDate: "10-02-2024" },
     { eventName: "Retreat", eventDate: "10-05-2024" },
     { eventName: "Chapter", eventDate: "10-09-2024" }
