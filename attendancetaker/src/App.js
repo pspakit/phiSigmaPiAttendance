@@ -46,7 +46,7 @@ function App() {
   const [dateSearch, setDateSearch] = useState('')
 
   // form stuff 
-  const credits = ["Select Credit", "Chapter", "Scholarship", "Service", "Recruitment"]
+  const credits = ["Select Credit", "Chapter", "Scholarship", "Service", "Recruitment", "Leadership"]
   // TODO: add event and add date
   const events = [
                  // ADD EVENTS HERE
