@@ -52,6 +52,7 @@ function App() {
                  // ADD EVENTS HERE
     { eventName: "Retreat", eventDate: "10-05-2024" },
     { eventName: "Letter Writing for Scholarship", eventDate: "10-09-2024" },
+    { eventName: "NLP and Pizza", eventDate: "10-09-2024" },
     { eventName: "Chapter", eventDate: "10-09-2024" }
 
     // Add more events as needed
