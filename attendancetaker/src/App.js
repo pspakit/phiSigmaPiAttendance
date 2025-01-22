@@ -52,6 +52,8 @@ function App() {
                  // ADD EVENTS HERE
     { eventName: "Chapter", eventDate: "01-22-2025" },
     { eventName: "Recruitment Interest Meeting", eventDate: "01-22-2025" },
+    { eventName: "ELP and Chill", eventDate: "01-23-2025" },
+    { eventName: "Cookie Decorating Rush", eventDate: "01-28-2025" },
     { eventName: "Chapter", eventDate: "01-29-2025" }
     // Add more events as needed
   ];
