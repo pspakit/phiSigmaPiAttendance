@@ -53,7 +53,8 @@ function App() {
     { eventName: "Dog Toy Making", eventDate: "03-26-2025" },
     { eventName: "Chapter", eventDate: "03-26-2025" },
     { eventName: "Headshots for Scholarship", eventDate: "03-27-2025" },
-    { eventName: "Tiger Rescue", eventDate"03-29-2025" }
+    { eventName: "Tiger Rescue", eventDate: "03-29-2025" },
+    { eventName: "Scholarship X Leadership Event", eventDate: "04-02-2025" }
     // Add more events as needed
   ];
   // submitting new event stuff
