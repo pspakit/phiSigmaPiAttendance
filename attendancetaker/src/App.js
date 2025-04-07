@@ -55,6 +55,8 @@ function App() {
     { eventName: "Ritual", eventDate: "04-04-2025" },
     { eventName: "Chapter", eventDate: "04-09-2025" },
     { eventName: "Dog Walking", eventDate: "04-12-2025" }
+    { eventName: "Test", eventDate: "04-17-2025" }
+
     // Add more events as needed
   ];
   // submitting new event stuff
