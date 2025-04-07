@@ -54,7 +54,7 @@ function App() {
     { eventName: "Easter egg hunt/affirmations", eventDate: "04-03-2025" },
     { eventName: "Ritual", eventDate: "04-04-2025" },
     { eventName: "Chapter", eventDate: "04-09-2025" },
-    { eventName: "Dog Walking", eventDate: "04-12-2025" }
+    { eventName: "Dog Walking", eventDate: "04-12-2025" },
     { eventName: "Test", eventDate: "04-07-2025" }
 
     // Add more events as needed
